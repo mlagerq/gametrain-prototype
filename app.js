@@ -11,10 +11,11 @@ const story = [
     "I was at the park with some friends doing heroin...police came...",
     "I was represented by a public defender. They recommended I take a plea bargain."
 ];
+const images = ["scene1","scene2","scene3","scene4"];
 
 //updates stage content when "continue" button is pressed
 function nextStage(){
-    updateElement("header1", stageNames);
+    updateElement("header", stageNames);
     updateElement("maintext", story);
     stage++;
 }
