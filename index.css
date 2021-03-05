@@ -62,11 +62,3 @@ body {
 .characters .item:hover .caption {
   transform: translateY(0%);
 }
-
-.yesicon {
-  color: greenyellow;
-}
-
-.noicon {
-  color: red;
-}

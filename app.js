@@ -12,11 +12,15 @@ const story = [
     "I was represented by a public defender. They recommended I take a plea bargain."
 ];
 const images = ["scene1","scene2","scene3","scene4"];
+const probability = [0, 0, 3, 5];
 
 //updates stage content when "continue" button is pressed
 function nextStage(){
     updateElement("header", stageNames);
     updateElement("maintext", story);
+    if (stage > 1){
+        probMachine();
+    }
     stage++;
 }
 
@@ -26,8 +30,28 @@ function updateElement(id, variable){
     temp.innerHTML = variable[stage];
 }
 
+function probMachine(){
+    container = document.getElementById("prob-icons");
+    if (stage == 2){
+        for (let j = 0; j < 10; j++){
+            icon = document.createElement("i");
+            icon.id = "icon"+j;
+            icon.className = "bi-person-fill";
+            if (j < probability[stage]){icon.style = "font-size: 2rem; color: red";}
+            else { icon.style = "font-size: 2rem; color: black";}
+            container.appendChild(icon);
+        }
+    } else {
+        for (let j = 0; j < 10; j++){
+            icon = document.getElementById("icon"+j);
+            if (j < probability[stage]){icon.style.color = "red";}
+            else { icon.style.color = "black";} 
+        }
+    }
+}
+
 function changeColor(){
-    prob = 3;
+    prob = probability[stage-1];
     rand = 20+Math.round(Math.random()*30);
     console.log(rand);
     let i = 1;
