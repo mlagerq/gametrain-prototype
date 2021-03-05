@@ -30,6 +30,7 @@ function updateElement(id, variable){
     temp.innerHTML = variable[stage];
 }
 
+//sets up probability machine on the first real situation slide, updates color display for following slide(s)
 function probMachine(){
     container = document.getElementById("prob-icons");
     if (stage == 2){
@@ -50,13 +51,16 @@ function probMachine(){
     }
 }
 
+//changes colors of probability icons sequentially before landing on a random one
 function changeColor(){
+    //probability of desired outcome
     prob = probability[stage-1];
+    //random outcome
     rand = 20+Math.round(Math.random()*30);
-    console.log(rand);
-    let i = 1;
     first = document.getElementById("icon0");
     first.style.color = "yellowgreen";
+    let i = 1;
+    //changes every 1/10 second
     let int = setInterval(function(){ 
         console.log(i);
             next = document.getElementById("icon"+(i%10)); 
