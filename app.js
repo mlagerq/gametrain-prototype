@@ -25,3 +25,28 @@ function updateElement(id, variable){
     temp = document.getElementById(id);
     temp.innerHTML = variable[stage];
 }
+
+function changeColor(){
+    prob = 3;
+    rand = 20+Math.round(Math.random()*30);
+    console.log(rand);
+    let i = 1;
+    first = document.getElementById("icon0");
+    first.style.color = "yellowgreen";
+    let int = setInterval(function(){ 
+        console.log(i);
+            next = document.getElementById("icon"+(i%10)); 
+            if (((i-1)%10) < prob){
+                first.style.color = "red";
+            }
+            else{
+                first.style.color = "black";
+            }
+            next.style.color = "yellowgreen";
+            first = next;
+            i++;
+            if (i === rand){
+                clearInterval(int);
+            }
+    }, 100);  
+}
