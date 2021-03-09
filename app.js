@@ -11,13 +11,14 @@ const story = [
     "I was at the park with some friends doing heroin...police came...",
     "I was represented by a public defender. They recommended I take a plea bargain."
 ];
-const images = ["scene1","scene2","scene3","scene4"];
+const images = ["images/rules.jpeg","images/character1.png","images/scene1.jpeg","images/scene2.jpeg"];
 const probability = [0, 0, 3, 5];
 
 //updates stage content when "continue" button is pressed
 function nextStage(){
     updateElement("header", stageNames);
     updateElement("maintext", story);
+    replaceImage();
     if (stage > 1){
         probMachine();
     }
@@ -28,6 +29,18 @@ function nextStage(){
 function updateElement(id, variable){
     temp = document.getElementById(id);
     temp.innerHTML = variable[stage];
+}
+
+//replaces the div that contains the image with new div containing new image
+function replaceImage(){
+    var imagediv = document.createElement("div");
+    imagediv.setAttribute("id","imagediv");
+    var img = document.createElement("img");
+    img.setAttribute("height", "500");
+    img.setAttribute("width", "800");
+    img.src = images[stage];
+    imagediv.appendChild(img);
+    document.getElementById("imagediv").replaceWith(imagediv);
 }
 
 //sets up probability machine on the first real situation slide, updates color display for following slide(s)
