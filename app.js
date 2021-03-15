@@ -7,12 +7,16 @@ let stage = 0;
 const stageNames = ["Start", "Meet the Character", "Police", "Court"];
 const story = [
     "Here are the basic rules...",
-    "Hi, I'm your guide...my name is ___. Follow me through various interactions with the criminal justice system.",
-    "I was at the park with some friends doing heroin...police came...",
-    "I was represented by a public defender. They recommended I take a plea bargain."
+    "Hey, thanks for coming. I’m Jerome, and this is my story.",
+    "When he was 22 years old, Jerome and a couple other guys were struggling financially. One of his friends had the idea to break into a house in a nicer neighborhoods.",
+    "The house had a security system that automatically called the police...",
+    "Some defendents are released without financial bail - see if Jerome got lucky.",
+    "Unfortunately, Jerome was held on $2000 bail. He was unable to pay the $2000, so had to stay in jail.",
+    "Thankfully, Jerome was released without bail. He lived at home until his next court date.",
+    "He was represented by a public defender. They recommended that he take a plea bargain."
 ];
-const images = ["images/rules.jpeg","images/character1.png","images/scene1.jpeg","images/scene2.jpeg"];
-const probability = [0, 0, 3, 5];
+const images = ["images/rules.jpeg","images/character1.png","images/scene1.jpeg", "images/scene1.jpeg", "images/scene2.jpeg", "images/scene2.jpeg"];
+const probability = [0, 0, 0, 0, 3, 0, 0, 9];
 
 //updates stage content when "continue" button is pressed
 function nextStage(){
@@ -75,7 +79,6 @@ function changeColor(){
     let i = 1;
     //changes every 1/10 second
     let int = setInterval(function(){ 
-        console.log(i);
             next = document.getElementById("icon"+(i%10)); 
             if (((i-1)%10) < prob){
                 first.style.color = "red";
@@ -88,6 +91,15 @@ function changeColor(){
             i++;
             if (i === rand){
                 clearInterval(int);
+                let outcome = (rand % 10);
+                if (outcome > prob){
+                    window.alert("$2000 bail")
+                    nextStage();
+                    nextStage();
+                } else{
+                    window.alert("No bail!")
+                    nextStage();
+                }
             }
     }, 100);  
 }
