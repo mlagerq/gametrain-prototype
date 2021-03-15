@@ -4,7 +4,7 @@
 let stage = 0;
 
 //content for each stage
-const stageNames = ["Start", "Meet the Character", "Police", "Court"];
+const stageNames = ["Start", "Meet the Character", "Story", "Police", "Bail?", "$2000 bail", "No bail!", "Court"];
 const story = [
     "Here are the basic rules...",
     "Hey, thanks for coming. I’m Jerome, and this is my story.",
@@ -19,20 +19,18 @@ const images = ["images/rules.jpeg","images/character1.png","images/scene1.jpeg"
 const probability = [0, 0, 0, 0, 3, 0, 0, 9];
 
 //updates stage content when "continue" button is pressed
-function nextStage(){
-    updateElement("header", stageNames);
-    updateElement("maintext", story);
+function nextStage(whichStage){
+    updateElement("header", stageNames, whichStage);
+    updateElement("maintext", story, whichStage);
     replaceImage();
-    if (stage > 1){
-        probMachine();
-    }
-    stage++;
+    probMachine();
+    stage=whichStage;
 }
 
 //generalizes element updating
-function updateElement(id, variable){
+function updateElement(id, variable, whichStage){
     temp = document.getElementById(id);
-    temp.innerHTML = variable[stage];
+    temp.innerHTML = variable[whichStage];
 }
 
 //replaces the div that contains the image with new div containing new image
@@ -50,28 +48,26 @@ function replaceImage(){
 //sets up probability machine on the first real situation slide, updates color display for following slide(s)
 function probMachine(){
     container = document.getElementById("prob-icons");
-    if (stage == 2){
+    var newicons = document.createElement("div");
+    newicons.setAttribute("id","prob-icons");
+    console.log(probability[stage]);
+    if (probability[stage+1] != 0){
         for (let j = 0; j < 10; j++){
             icon = document.createElement("i");
             icon.id = "icon"+j;
             icon.className = "bi-person-fill";
-            if (j < probability[stage]){icon.style = "font-size: 2rem; color: red";}
+            if (j < probability[stage+1]){icon.style = "font-size: 2rem; color: red";}
             else { icon.style = "font-size: 2rem; color: black";}
-            container.appendChild(icon);
-        }
-    } else {
-        for (let j = 0; j < 10; j++){
-            icon = document.getElementById("icon"+j);
-            if (j < probability[stage]){icon.style.color = "red";}
-            else { icon.style.color = "black";} 
+            newicons.appendChild(icon);
         }
     }
+    container.replaceWith(newicons);
 }
 
 //changes colors of probability icons sequentially before landing on a random one
 function changeColor(){
     //probability of desired outcome
-    prob = probability[stage-1];
+    prob = probability[stage];
     //random outcome
     rand = 20+Math.round(Math.random()*30);
     first = document.getElementById("icon0");
@@ -93,12 +89,11 @@ function changeColor(){
                 clearInterval(int);
                 let outcome = (rand % 10);
                 if (outcome > prob){
-                    window.alert("$2000 bail")
-                    nextStage();
-                    nextStage();
+                    window.alert("$2000 bail");
+                    nextStage(5);
                 } else{
-                    window.alert("No bail!")
-                    nextStage();
+                    window.alert("No bail!");
+                    nextStage(6);
                 }
             }
     }, 100);  
