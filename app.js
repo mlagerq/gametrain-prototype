@@ -2,21 +2,42 @@
 
 //tracks progress
 let stage = 0;
+let outcomes = 0;
 
 //content for each stage
-const stageNames = ["Start", "Meet the Character", "Story", "Police", "Bail?", "$2000 bail", "No bail!", "Court"];
+const stageNames = [
+    "Start",
+    "Meet the Character", 
+    "Story", 
+    "Police", 
+    "Will excessive force be used?", 
+    "Excessive force used", 
+    "No excessive force", 
+    "Bail?", 
+    "$2000 bail", 
+    "Can you pay bail?", 
+    "Can pay bail", 
+    "Cannot pay bail", 
+    "No bail!", 
+    "Court"];
 const story = [
     "Here are the basic rules...",
     "Hey, thanks for coming. I’m Jerome, and this is my story.",
     "When he was 22 years old, Jerome and a couple other guys were struggling financially. One of his friends had the idea to break into a house in a nicer neighborhoods.",
     "The house had a security system that automatically called the police...",
+    "The police often use excessive force. Will the police use excessive force on Jerome?",
+    "The police used excessive force and Jerome was injured during his arrest",
+    "The police arrested Jerome without the use of force",
     "Some defendents are released without financial bail - see if Jerome got lucky.",
-    "Unfortunately, Jerome was held on $2000 bail. He was unable to pay the $2000, so had to stay in jail.",
+    "Unfortunately, Jerome was held on $2000 bail.",
+    "Will Jerome be able to pay his bail?",
+    "Jerome is able to pay his bail and returned home with his family.",
+    "He was unable to pay the $2000, so had to stay in jail.",
     "Thankfully, Jerome was released without bail. He lived at home until his next court date.",
     "He was represented by a public defender. They recommended that he take a plea bargain."
 ];
 const images = ["images/rules.jpeg","images/character1.png","images/scene1.jpeg", "images/scene1.jpeg", "images/scene2.jpeg", "images/scene2.jpeg"];
-const probability = [0, 0, 0, 0, 3, 0, 0, 9];
+const probability = [0, 0, 0, 0, 3, 0, 0, 9, 0, 4, 0, 0, 0];
 
 //updates stage content when "continue" button is pressed
 function nextStage(whichStage){
@@ -43,6 +64,19 @@ function replaceImage(){
     img.src = images[stage];
     imagediv.appendChild(img);
     document.getElementById("imagediv").replaceWith(imagediv);
+}
+
+// keeps track of which decision point we're at
+function outcomeMessage(occur){
+    if (outcomes == 0) {
+        if (occur == true) {
+            return "Excessive force was not used";
+            stage = stage+1;
+        }
+        else {
+            return "Excessive force was used";
+        } 
+    }
 }
 
 //sets up probability machine on the first real situation slide, updates color display for following slide(s)
@@ -73,6 +107,7 @@ function changeColor(){
     first = document.getElementById("icon0");
     first.style.color = "yellowgreen";
     let i = 1;
+    let occur = true;
     //changes every 1/10 second
     let int = setInterval(function(){ 
             next = document.getElementById("icon"+(i%10)); 
@@ -89,10 +124,14 @@ function changeColor(){
                 clearInterval(int);
                 let outcome = (rand % 10);
                 if (outcome > prob){
-                    window.alert("$2000 bail");
+                    occur = true
+                    let message = outcomeMessage(occur);
+                    window.alert(message);
                     nextStage(5);
                 } else{
-                    window.alert("No bail!");
+                    occur = false;
+                    let message = outcomeMessage(occur);
+                    window.alert(message);
                     nextStage(6);
                 }
             }
