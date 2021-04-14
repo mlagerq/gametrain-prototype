@@ -37,8 +37,8 @@
               </div>
         </div>
         <div id="prob-icons"></div>
-        <button type="button" class="btn btn-primary" onclick="changeColor()">Generate Outcome</button>
-        <button type="button" class="btn btn-secondary" onclick="nextStage(stage+1)">Continue</button>
+        <button id="generate" type="button" class="btn btn-primary" onclick="changeColor()" style="display: none;">Generate Outcome</button>
+        <button id="continue" type="button" class="btn btn-secondary" onclick="nextStage(stage+1+skipStages[stage])">Continue</button>
     </div>
 </body>
 <script src="app.js"></script>
