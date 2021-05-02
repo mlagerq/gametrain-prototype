@@ -37,7 +37,7 @@ const story = [
     "He was represented by a public defender. They recommended that he take a plea bargain."
 ];
 const images = ["images/rules.jpeg","images/character1.png","images/scene1.jpeg", "images/scene1.jpeg", "images/scene1.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg"];
-const probability = [0, 0, 0, 0, 1, 0, 0, 7, 0, 5, 0, 0, 0, 0];
+const probability = [0, 0, 0, 0, 3, 0, 0, 7, 0, 5, 0, 0, 0, 0];
 const skipStages = [0, 0, 0, 0, null, 1, 0, null, 0, null, 2, 1, 0, -1];
 
 //updates stage content when "continue" button is pressed
@@ -64,6 +64,12 @@ function replaceImage(whichStage){
     img.setAttribute("height", "500");
     img.setAttribute("width", "800");
     img.src = images[whichStage];
+
+    var maintext = document.createElement("div");
+    maintext.setAttribute("class","maintext");
+    maintext.innerHTML = story[whichStage];
+
+
     imagediv.appendChild(img);
     document.getElementById("imagediv").replaceWith(imagediv);
 }
@@ -162,11 +168,11 @@ function changeColor(){
                 console.log(outcome)
                 if (outcome < prob){
                     occur = true;
-                    let message = outcomeMessage(occur);
+                    var message = outcomeMessage(occur);
                     window.alert(message);
                 } else{
                     occur = false;
-                    let message = outcomeMessage(occur);
+                    var message = outcomeMessage(occur);
                     window.alert(message);
                 }
             }

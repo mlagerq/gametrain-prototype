@@ -10,11 +10,22 @@
     <link rel="stylesheet" href="index.css"/>
 </head>
 <body>
-    <div class="container" id="maindiv">
-        <h1 id="header" style="text-align: center;">Welcome to [game name here]</h1>
-        <p id="maintext" style="text-align: center;">Choose a character below. Each character has a differnt identity and their identity will determine the outcome of various scenarios through the criminal justice system.</p>
+    <!-- <div class="container" id="maindiv"> -->
+        <!-- <h1 id="header" style="text-align: center;">Welcome to [game name here]</h1> -->
+        <!-- <p id="maintext" style="text-align: center;">Choose a character below. Each character has a differnt identity and their identity will determine the outcome of various scenarios through the criminal justice system.</p> -->
+        <div id="imagediv" class="imagediv">
+          <img class="mainimage" src="images/scene1.jpeg">
+          <h1 id="header" class="header">Welcome</h1>
+          <div class="maintext">Welcome to the game! This is the main page</div>
+          <div id="prob-icons"></div>
+          <div class="buttons">
+            <button id="continue" type="button" class="btn btn-secondary" onclick="nextStage(stage+1+skipStages[stage])" style="float: right; vertical-align: middle;">Continue</button>
+            <!-- <button id="generate" type="button" class="generate" onclick="changeColor()">Generate Outcome</button>
+            <button id="continue" type="button" class="btn btn-secondary" onclick="nextStage(stage+1+skipStages[stage])">Continue</button> -->
+          </div>
+        </div>
         <!-- Character grid -->
-        <div id="imagediv" class="characters">
+        <!-- <div id="imagediv" class="characters">
             <div class="item">
                 <img src="images/character1.png" />
                 <span class="caption">Hi! My name is Josh and I am 19 years old. I live in New York City and I do not have a criminal record.</span>
@@ -35,10 +46,10 @@
                 <img src="images/character1.png" />
                 <span class="caption">This is an image caption for image 5</span>
               </div>
-        </div>
-        <div id="prob-icons"></div>
+        </div> -->
+        <!-- <div id="prob-icons"></div>
         <button id="generate" type="button" class="btn btn-primary" onclick="changeColor()" style="display: none;">Generate Outcome</button>
-        <button id="continue" type="button" class="btn btn-secondary" onclick="nextStage(stage+1+skipStages[stage])">Continue</button>
+        <button id="continue" type="button" class="btn btn-secondary" onclick="nextStage(stage+1+skipStages[stage])">Continue</button> -->
     </div>
 </body>
 <script src="app.js"></script>

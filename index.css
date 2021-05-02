@@ -20,7 +20,7 @@ body {
 #graphic:hover {
   transform: scale(1.2);} */
 
-.characters {
+/* .characters {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -61,11 +61,57 @@ body {
 
 .characters .item:hover .caption {
   transform: translateY(0%);
-}
+} */
 
 /* centers images */
 img {
   display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.imagediv {
+  background-color: black;
+  position: relative;
+  height: 600px;
+  width: 800px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  top: 5px;
+}
+
+.mainimage {
+  height: 100%;
+  width: 100%;
+}
+.maintext {
+  background-color: lightgray;
+  opacity: 80%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header {
+  background-color: lightgray;
+  text-align: center;
+  position: absolute;
+  top: 5%;
+  left: 11%;
+  transform: translate(-50%, -50%);
+}
+
+.buttons {
+  background-color: black;
+  width: 100%;
+  height: 10%;
+  position: absolute;
+  bottom: 0%;
+}
+
+.generate {
+  position: relative;
+  float: right;
 }
