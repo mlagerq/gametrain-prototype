@@ -33,17 +33,19 @@ const story = [
     "Thankfully, Jerome was released without bail. He lived at home until his next court date.",
     "He was represented by a public defender. They recommended that he take a plea bargain."
 ];
-const images = ["images/park.jpeg","images/character1.png","images/scene1.jpeg", "images/scene1.jpeg", "images/scene1.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg"];
+const images = ["images/park.jpeg","images/character.jpeg","images/house.jpg", "images/camera.jpg", "images/scene1.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg"];
 const probability = [0, 0, 0, 0, 3, 0, 0, 7, 0, 5, 0, 0, 0, 0];
 const skipStages = [0, 0, 0, 0, null, 1, 0, null, 0, null, 2, 1, 0, -1];
 
 //updates stage content when "continue" button is pressed
 function nextStage(whichStage){
+    console.log(whichStage);
+    console.log(probability[whichStage]);
     updateElement("header", stageNames, whichStage);
     updateElement("maintext", story, whichStage);
     replaceImage(whichStage);
     probMachine(whichStage);
-    showButton(whichStage, false);
+    // showButton(whichStage, false);
     stage=whichStage;
 }
 
@@ -58,8 +60,8 @@ function replaceImage(whichStage){
     var imagediv = document.createElement("div");
     imagediv.setAttribute("id","imagediv");
     var img = document.createElement("img");
-    img.setAttribute("height", "500");
-    img.setAttribute("width", "800");
+    img.setAttribute("height", "100%");
+    img.setAttribute("width", "100%");
     img.src = images[whichStage];
 
     var maintext = document.createElement("div");
@@ -176,14 +178,14 @@ function changeColor(){
     }, 100);  
 }
 
-function showButton(whichStage, toggle) {
-    var gen = document.getElementById("generate");
-    var cont = document.getElementById("continue")
-    if (probability[whichStage]==0 | toggle==true) {
-      cont.style.display = "block";
-      gen.style.display = "none";
-    } else {
-      gen.style.display = "block";
-      cont.style.display = "none";
-    }
-  }
+// function showButton(whichStage, toggle) {
+//     var gen = document.getElementById("generate");
+//     var cont = document.getElementById("continue")
+//     if (probability[whichStage]==0 | toggle==true) {
+//       cont.style.display = "block";
+//       gen.style.display = "none";
+//     } else {
+//       gen.style.display = "block";
+//       cont.style.display = "none";
+//     }
+//   }
