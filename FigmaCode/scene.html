@@ -8,9 +8,8 @@
             <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+            <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
             <link rel="stylesheet" href="scene.css">
-            
-          
           </head>
           
           <body>
@@ -20,43 +19,30 @@
                 </div>
                 <div  class="money_background">
                 </div>
-                <div  class="probability_background">
+                <div  class="probability_background" id="probability_background">
                 </div>
-                <div  class="character_icon">
+                <div  class="character_icon"></div>
+                <div id="pb">
+                  <div id="progress">
+                    <div id="done">Loading...</div>
+                  </div>
                 </div>
-                <div  class="bank_icon">
-                </div>
-                <span  class="money">$500</span>
                 <!-- Right now, the onclick function only works whne you click on the background and not on the text "Generate." Combine the button and text into one element to fix this. -->
                 <!-- <div  class="continue_generate_button" onclick="nextStage(stage+1+skipStages[stage])"> 
                 </div> -->
-                <span class="continue_generate_button" onclick="nextStage(stage+1+skipStages[stage])">Continue</span>
+                <span class="continue_generate_button" id="generate" onclick="changeColor()">Generate</span>
+                <span class="continue_generate_button" id="continue" onclick="nextStage(stage+1+skipStages[stage])">Continue</span>
                 <div  class="map_background">
                 </div>
                 <span  class="map_text">Map</span>
                 <!-- <span  class="continue_generate_text" >     Generate</span> -->
                 <div class="probability_inner_background">
                   <div class="prob-icons" id="prob-icons"></div>
-                  <!-- <div class="ei23_0_9_1_1_15" id="prob-icons">
-                  </div>
-                  <div  class="ei23_0_9_1_1_18">
-                  </div>
-                  <div  class="ei23_0_9_1_2_0">
-                  </div>
-                  <div  class="ei23_0_9_1_6_2">
-                  </div>
-                  <div  class="ei23_0_9_1_1_16">
-                  </div> -->
                 </div>
-                <div  class="main_text_background">
-                </div>
-                <div  class="prompt_text_background">
-                </div>
-                <div  class="header_text_background">
-                </div>
-                <span  class="main_text" id="maintext">This game will walk you through one person's experience with the criminal justice system.</span>
-                <span  class="prompt_text">Click the continue button to meet the character.</span>
-                <span  class="header_text" id="header">Welcome</span>
+                <span  class="main_text_background" id="maintext">This game will walk you through one person's experience with the criminal justice system.</span>
+                <span  class="prompt_text_background" id="prompttext">Click the continue button to meet the character.</span>
+                <span  class="header_text_background" id="header">Welcome</span>
+                </span>
                 <!-- <div  class="green_header_design">
                 </div> -->
                 <span  class="question_mark">?</span>

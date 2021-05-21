@@ -23,7 +23,7 @@ const stageNames = [
 const story = [
     "Here are the basic rules...",
     "Hey, thanks for coming. I’m Jerome, and this is my story.",
-    "When he was 22 years old, Jerome and a couple other guys were struggling financially. One of his friends had the idea to break into a house in a nicer neighborhoods.",
+    "When he was 22 years old, Jerome and a couple other guys were struggling financially. One of his friends had the idea to break into a house in a nicer neighborhood.",
     "The house had a security system that automatically called the police...",
     "The police often use excessive force. Will the police use excessive force on Jerome?",
     "The police used excessive force and Jerome was injured during his arrest",

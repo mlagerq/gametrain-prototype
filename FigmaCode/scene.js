@@ -33,6 +33,33 @@ const story = [
     "Thankfully, Jerome was released without bail. He lived at home until his next court date.",
     "He was represented by a public defender. They recommended that he take a plea bargain."
 ];
+
+//title, sentence, read more (when they click on the card), path change (to be replaced with a function), feedback (TBD)
+var cards = {
+    1: ["Abolish Cash Bail", 
+    "Judges cannot make defendants pay a deposit to be released from pre-trail detention.",
+    "Background: The decision of whether a defendant should be jailed while awaiting trial (and therefore have not been convicted of any crime) is often based on a defendant’s wealth and not on public safety considerations." + 
+    "This system burdens the poor and increases the pressure to accept a plea deal even when the defendant is innocent. People should not be in jail simply because they cannot afford to post bail, which has ripple effects on childcare, employment, and other essential needs.",
+    "Impact: remove pre-trial detention track completely",
+    "Great choice!"
+    ],
+    2: ["Ban Chokeholds",
+    "Require the police department to ban the use of chokeholds.",
+    "Background: okeholds are a tactic police use to control an individual by restricting air or blood flow, usually by kneeling on their neck, chest, or back."
+    + "Individuals frequently lose consciousness as a result; Eric Garner and many others have been killed by police chokeholds",
+    "Impact: no change to path",
+    "It would be great if police no longer used chokeholds, but a simple ban has shown to be ineffective; NYC banned chokeholds and that was not enough to deter police from using them anyway." + 
+    "It is likely more effective to criminalize chokeholds in conjection with limiting police unions to increase accountability and deterrence. However, criminalizing anything is creating the same cycle of reliance on carceral solutions.",
+    ],
+    3: ["Implement Civilian-Led Crisis Response",
+    "Create a civilian-led department to respond to subsets of emergency calls.",
+    "Background: Police currently respond to many 9-1-1 calls that do not require the use of force, and yet often escalate and result in violence. For example, police are more likely to use lethal force when responding to an emergency involving a person in psychiatric distress."+
+    "Alternatively, the CAHOOTS program in Eugene, Oregon, sends a medic and crisis worker for over 20% of emergency calls. According to crisis worker Ebony Morgan, the 30-year-old program has never caused serious injury or death and has saved the city money by replacing more expensive responses.",
+    "Impact: no police violence track.",
+    "Great choice!"
+    ]
+}
+
 const images = ["images/park.jpeg","images/character.jpeg","images/house.jpg", "images/camera.jpg", "images/scene1.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg"];
 const probability = [0, 0, 0, 0, 3, 0, 0, 7, 0, 5, 0, 0, 0, 0];
 const skipStages = [0, 0, 0, 0, null, 1, 0, null, 0, null, 2, 1, 0, -1];
@@ -45,7 +72,7 @@ function nextStage(whichStage){
     updateElement("maintext", story, whichStage);
     replaceImage(whichStage);
     probMachine(whichStage);
-    // showButton(whichStage, false);
+    showButton(whichStage, false);
     stage=whichStage;
 }
 
@@ -126,6 +153,7 @@ function probMachine(whichStage){
     var newicons = document.createElement("div");
     newicons.setAttribute("id","prob-icons");
     if (probability[whichStage] != 0){
+        showContainer("probability_background", true);
         for (let j = 0; j < 10; j++){
             icon = document.createElement("i");
             icon.id = "icon"+j;
@@ -134,6 +162,9 @@ function probMachine(whichStage){
             else { icon.style = "font-size: 2rem; color: black";}
             newicons.appendChild(icon);
         }
+    }
+    else{
+        showContainer("probability_background", false);
     }
     container.replaceWith(newicons);
 }
@@ -178,14 +209,35 @@ function changeColor(){
     }, 100);  
 }
 
-// function showButton(whichStage, toggle) {
-//     var gen = document.getElementById("generate");
-//     var cont = document.getElementById("continue")
-//     if (probability[whichStage]==0 | toggle==true) {
-//       cont.style.display = "block";
-//       gen.style.display = "none";
-//     } else {
-//       gen.style.display = "block";
-//       cont.style.display = "none";
-//     }
-//   }
+let elem = document.getElementById("done");   
+let width = 1;
+let id = setInterval(frame, 100);
+function frame() {
+    if (width >= 100) {
+        clearInterval(id);
+} else {
+    width++; 
+    elem.style.width = width + '%'; 
+}
+}
+
+function showButton(whichStage, toggle) {
+    var gen = document.getElementById("generate");
+    var cont = document.getElementById("continue");
+    if (probability[whichStage]==0 | toggle==true) {
+      cont.style.display = "grid";
+      gen.style.display = "none";
+    } else {
+      gen.style.display = "grid";
+      cont.style.display = "none";
+    }
+  }
+
+function showContainer(name, toggle) {
+   var cont = document.getElementById(name);
+    if (toggle==true) {
+      cont.style.display = "grid";
+    } else {
+      cont.style.display = "none";
+    } 
+}
