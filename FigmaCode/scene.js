@@ -66,8 +66,13 @@ const skipStages = [0, 0, 0, 0, null, 1, 0, null, 0, null, 2, 1, 0, -1];
 
 //updates stage content when "continue" button is pressed
 function nextStage(whichStage){
+    // if (whichStage>stageNames.length) {
+    //     document.getElementById("continue").onclick = function () {
+    //         location.href = "cards.html";
+    //     };
+    // }
     console.log(whichStage);
-    console.log(probability[whichStage]);
+    console.log(stageNames.length);
     updateElement("header", stageNames, whichStage);
     updateElement("maintext", story, whichStage);
     replaceImage(whichStage);
@@ -195,7 +200,6 @@ function changeColor(){
                 clearInterval(int);
                 showButton(stage, true);
                 let outcome = ((rand-1) % 10);
-                console.log(outcome)
                 if (outcome < prob){
                     occur = true;
                     var message = outcomeMessage(occur);
@@ -209,35 +213,52 @@ function changeColor(){
     }, 100);  
 }
 
-let elem = document.getElementById("done");   
-let width = 1;
-let id = setInterval(frame, 100);
-function frame() {
-    if (width >= 100) {
-        clearInterval(id);
-} else {
-    width++; 
-    elem.style.width = width + '%'; 
-}
-}
+// let elem = document.getElementById("done");   
+// let width = 1;
+// let id = setInterval(frame, 100);
+// function frame() {
+//     if (width >= 100) {
+//         clearInterval(id);
+// } else {
+//     width++; 
+//     elem.style.width = width + '%'; 
+// }
+// }
 
 function showButton(whichStage, toggle) {
     var gen = document.getElementById("generate");
     var cont = document.getElementById("continue");
-    if (probability[whichStage]==0 | toggle==true) {
+    var card = document.getElementById("cards");
+    if (probability[whichStage]==0 & whichStage<stageNames.length-1 | toggle==true) {
       cont.style.display = "grid";
       gen.style.display = "none";
-    } else {
+      card.style.display = "none";
+    } 
+    else if (whichStage==stageNames.length-1) {
+      cont.style.display = "none";
+      gen.style.display = "none";
+      card.style.display = "grid";
+        
+    }
+    else {
       gen.style.display = "grid";
       cont.style.display = "none";
+      card.style.display = "none";
+
     }
   }
 
 function showContainer(name, toggle) {
-   var cont = document.getElementById(name);
+   var contain = document.getElementById(name);
     if (toggle==true) {
-      cont.style.display = "grid";
+      contain.style.display = "grid";
     } else {
-      cont.style.display = "none";
-    } 
+      contain.style.display = "none";
+    }
+}
+
+function createCards() {
+    let title = document.createElement("h2");
+    let card = document.getElementById("card1");
+    
 }

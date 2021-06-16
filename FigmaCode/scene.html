@@ -13,41 +13,30 @@
           </head>
           
           <body>
-            <!-- <div class=e26_2> -->
-              <!-- <div class=e23_0> -->
-                <div  class="background_image" id="imagediv">
-                </div>
-                <div  class="money_background">
-                </div>
+                <div class="background_image" id="imagediv"></div>
+                <span class="header" id="header">Welcome</span>
+                <div  class="money_background"></div>
+                <span  class="main_text" id="maintext">This game will walk you through one person's experience with the criminal justice system.</span>
+                <span  class="prompt_text" id="prompttext">Click the continue button to meet the character.</span>
                 <div  class="probability_background" id="probability_background">
                 </div>
                 <div  class="character_icon"></div>
-                <div id="pb">
-                  <div id="progress">
-                    <div id="done">Loading...</div>
-                  </div>
-                </div>
-                <!-- Right now, the onclick function only works whne you click on the background and not on the text "Generate." Combine the button and text into one element to fix this. -->
-                <!-- <div  class="continue_generate_button" onclick="nextStage(stage+1+skipStages[stage])"> 
-                </div> -->
-                <span class="continue_generate_button" id="generate" onclick="changeColor()">Generate</span>
-                <span class="continue_generate_button" id="continue" onclick="nextStage(stage+1+skipStages[stage])">Continue</span>
-                <div  class="map_background">
-                </div>
-                <span  class="map_text">Map</span>
-                <!-- <span  class="continue_generate_text" >     Generate</span> -->
+                <span class="map">Map</span>
+                <span  class="question_mark">?</span>
                 <div class="probability_inner_background">
                   <div class="prob-icons" id="prob-icons"></div>
                 </div>
-                <span  class="main_text_background" id="maintext">This game will walk you through one person's experience with the criminal justice system.</span>
-                <span  class="prompt_text_background" id="prompttext">Click the continue button to meet the character.</span>
-                <span  class="header_text_background" id="header">Welcome</span>
-                </span>
-                <!-- <div  class="green_header_design">
+                <!-- <div id="pb">
+                  <div id="progress">
+                    <div id="done">Loading...</div>
+                  </div>
                 </div> -->
-                <span  class="question_mark">?</span>
-              <!-- </div> -->
-              <!-- </div> -->
+                <!-- <div  class="continue_generate_button" onclick="nextStage(stage+1+skipStages[stage])"> 
+                </div> -->
+                <a href="cards.html"><span class="continue_generate_button" id="cards">Cards</span></a>
+                <span class="continue_generate_button" id="generate" onclick="changeColor()">Generate</span>
+                <span class="continue_generate_button" id="continue" onclick="nextStage(stage+1+skipStages[stage])">Continue</span>
+                
           </body>
           <script src="scene.js"></script>
           </html>
