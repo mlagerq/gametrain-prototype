@@ -257,8 +257,28 @@ function showContainer(name, toggle) {
     }
 }
 
-function createCards() {
-    let title = document.createElement("h2");
-    let card = document.getElementById("card1");
-    
+// function createCards() {
+//     let title = document.createElement("h2");
+//     let card = document.getElementById("card1");
+
+//     for (let i = 0; i<3; i++) {
+
+//     }
+//     title.innerHTML = d;
+// }
+
+function selectCard(cardNum) {
+    var otherCards = [1,2,3];
+    otherCards.splice(cardNum-1, 1); //removes selected card
+    console.log(otherCards);
+    for (let i = 0; i<2; i++) {
+        var cardID = "card"+otherCards[i];
+        console.log(cardID);
+        var card = document.getElementById(cardID);
+        card.style.opacity = '.5';
+    }
+    var cardID = "card"+cardNum;
+    var card = document.getElementById(cardID);
+    card.style.boxShadow = '0px 0px 0px 10px green inset';
+
 }

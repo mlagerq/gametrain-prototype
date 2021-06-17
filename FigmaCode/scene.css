@@ -354,7 +354,12 @@
   color: black;
   font-family: Verdana, Tahoma, sans-serif;
   font-variant: small-caps;
-  font-size: 1em;
+  font-size: 1.5em;
+}
+.cardText {
+  margin-left: 5%;
+  margin-right: 5%;
+  font-size: 1.25em;
 }
 #card1 { 
 	background-color:rgba(229.00000154972076, 229.00000154972076, 229.00000154972076, 1);
