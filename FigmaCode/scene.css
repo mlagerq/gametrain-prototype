@@ -1,17 +1,3 @@
-/* .e26_2 {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-}
-.e23_0 {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  background-color: rgba(255, 255, 255, 1);
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 0px;
-  top: 0px;
-} */
 .background_image {
   width: 100%;
   height: 100%;
@@ -22,7 +8,7 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-.money_background {
+/* .money_background {
   background-color: rgba(
     48.000000938773155,
     48.000000938773155,
@@ -34,6 +20,41 @@
   position: absolute;
   left: 90.069%;
   top: 12.89%;
+} */
+.metrics {
+  background-color: rgba(
+    48.000000938773155,
+    48.000000938773155,
+    54.00000058114529,
+    0.800000011920929
+  );
+  width: 25%;
+  height: 23%;
+  position: absolute;
+  left: 75%;
+  top: 0%;
+}
+#healthBar {
+  width: 90%;
+  margin-left: 5%;
+  background-color: #ddd;
+}
+
+#healthProgress {
+  width: 50%;
+  height: 30px;
+  background-color: #04AA6D;
+}
+#moneyBar {
+  width: 90%;
+  margin-left: 5%;
+  background-color: #ddd;
+}
+
+#moneyProgress {
+  width: 50%;
+  height: 30px;
+  background-color: #04AA6D;
 }
 .probability_background {
   /* background-color:rgba(5.000000176951289, 4.000000236555934, 1.0000000591389835, 1); */

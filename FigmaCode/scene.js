@@ -266,19 +266,33 @@ function showContainer(name, toggle) {
 //     }
 //     title.innerHTML = d;
 // }
+var numSelections = 0;
 
 function selectCard(cardNum) {
-    var otherCards = [1,2,3];
-    otherCards.splice(cardNum-1, 1); //removes selected card
-    console.log(otherCards);
-    for (let i = 0; i<2; i++) {
-        var cardID = "card"+otherCards[i];
-        console.log(cardID);
+    let cardTitle = cards[cardNum][0];
+    var reason = prompt('Why did you pick '+cardTitle+'?');
+    if (reason !=null) {
+        // this part resets the cards so a new one can be selected
+        var nums = [1,2,3];
+        if (numSelections != 0) {
+            for (let i = 0; i<3; i++) {
+                var cardID = "card"+nums[i];
+                var card = document.getElementById(cardID);
+                card.style.opacity = '1';
+                card.style.boxShadow = '0px 0px 0px 0px';
+            }
+        }
+        var otherCards = [1,2,3];
+        otherCards.splice(cardNum-1, 1); //removes selected card
+        for (let i = 0; i<2; i++) {
+            var cardID = "card"+otherCards[i];
+            var card = document.getElementById(cardID);
+            card.style.opacity = '.5';
+        }
+        var cardID = "card"+cardNum;
         var card = document.getElementById(cardID);
-        card.style.opacity = '.5';
+        card.style.boxShadow = '0px 0px 0px 10px green inset';
+        numSelections += 1;
     }
-    var cardID = "card"+cardNum;
-    var card = document.getElementById(cardID);
-    card.style.boxShadow = '0px 0px 0px 10px green inset';
-
+    
 }
