@@ -71,8 +71,6 @@ function nextStage(whichStage){
     //         location.href = "cards.html";
     //     };
     // }
-    console.log(whichStage);
-    console.log(stageNames.length);
     updateElement("header", stageNames, whichStage);
     updateElement("maintext", story, whichStage);
     replaceImage(whichStage);
@@ -180,6 +178,7 @@ function changeColor(){
     prob = probability[stage];
     //random outcome
     rand = 20+Math.round(Math.random()*30);
+    console.log(rand)
     first = document.getElementById("icon0");
     first.style.color = "yellowgreen";
     let i = 1;
@@ -193,13 +192,11 @@ function changeColor(){
             else{
                 first.style.color = "black";
             }
-            next.style.color = "yellowgreen";
-            first = next;
-            i++;
-            if (i === rand){
+            if (i === rand+1){
                 clearInterval(int);
+                document.getElementById("icon"+(rand%10)).style.color = "yellowgreen";
                 showButton(stage, true);
-                let outcome = ((rand-1) % 10);
+                let outcome = ((rand) % 10);
                 if (outcome < prob){
                     occur = true;
                     var message = outcomeMessage(occur);
@@ -210,7 +207,12 @@ function changeColor(){
                     window.alert(message);
                 }
             }
-    }, 100);  
+            else {
+                next.style.color = "yellowgreen";
+                first = next;
+                i++;
+            }
+    }, 100);
 }
 
 // let elem = document.getElementById("done");   
