@@ -20,18 +20,18 @@ const stageNames = [
 const story = [
     "Here are the basic rules...",
     "Hey, thanks for coming. I’m Jerome, and this is my story.",
-    "When he was 22 years old, Jerome and a couple other guys were struggling financially. One of his friends had the idea to break into a house in a nicer neighborhoods.",
-    "The house had a security system that automatically called the police...",
-    "The police often use excessive force. Will the police use excessive force on Jerome?",
-    "The police used excessive force and Jerome was injured during his arrest",
-    "The police arrested Jerome without the use of force",
-    "Some defendents are released without financial bail - see if Jerome got lucky.",
-    "Unfortunately, Jerome was held on $2000 bail.",
+    "When he was 22 years old, Jerome and a couple other guys were struggling to make ends meet. They decided to break into a house in a nicer neighborhoods.",
+    "The police arrested Jerome a few days later based on video footage from another house. During the arrest, the police used excessive force on Jerome, putting him in a chokehold. During the arrest, the police used excessive force on Jerome, putting him in a chokehold. During the arrest, the police used excessive force on Jerome, putting him in a chokehold.",
+    "This can restrict breathing and sometimes result in serious injury, including loss of consciousness and even death. What will happen in Jerome's case?",
+    "The police used the chokehold recklessly and caused Jerome to lose consciousness. He was at risk for brain damage, psychological injury, and other lasting harm.",
+    "The police did not cause long-lasting physical damage, but Jerome may still suffer from lasting psychological effects, especially if this is not the first trauma he has experienced.",
+    "After arrest, a judge must decide whether Jerome can be released from jail while he waits for future court dates and if so, if he will have to pay financial bail. See if Jerome got lucky.",
+    "Unfortunately, Jerome was held on $2000 bail. If Jerome can pay the bail up front and returns for all court dates, he will get his money back.",
     "Will Jerome be able to pay his bail?",
-    "He was unable to pay the $2000, so had to stay in jail.",
-    "Jerome is able to pay his bail and returned home with his family.",
-    "Thankfully, Jerome was released without bail. He lived at home until his next court date.",
-    "He was represented by a public defender. They recommended that he take a plea bargain."
+    "He was unable to pay, so he has to stay in jail despite not being convicted of any crime yet. The average time spent in jail is 235 days, during which time he cannot work and racks up additional fees.",
+    "Jerome is able to pay his bail and returned home to his family. He may face challenges getting a job or other housing due to pending criminal charges on his record.",
+    "Thankfully, Jerome was released without bail. He lived at home until his next court date. He may face challenges getting a job or other housing due to pending criminal charges on his record.",
+    "While he waits for his next court date, he reflects on his experience so far with the police and carceral system pre-trial. How did he get here? Is his story typical?"
 ];
 
 //title, sentence, read more (when they click on the card), path change (to be replaced with a function), feedback (TBD)
@@ -61,8 +61,9 @@ var cards = {
 }
 
 const images = ["images/park.jpeg","images/character.jpeg","images/house.jpg", "images/camera.jpg", "images/scene1.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg"];
+const maps = ["images/map1.PNG", "images/map2.PNG", "images/map3.PNG", "images/map4.PNG", "images/map5.PNG", "images/map6.PNG"];
 const probability = [0, 0, 0, 0, 3, 0, 0, 7, 0, 5, 0, 0, 0, 0];
-const skipStages = [0, 0, 0, 0, null, 1, 0, null, 0, null, 2, 1, 0, -1];
+const skipStages = [0, 0, 0, 0, null, 1, 0, null, 0, null, 2, 1, 0, 0, -1];
 
 //updates stage content when "continue" button is pressed
 function nextStage(whichStage){
@@ -90,9 +91,14 @@ function replaceImage(whichStage){
     var imagediv = document.createElement("div");
     imagediv.setAttribute("id","imagediv");
     var img = document.createElement("img");
-    img.setAttribute("height", "100%");
-    img.setAttribute("width", "100%");
-    img.src = images[whichStage];
+    if (whichStage == stageNames.length){
+        img.src = maps[1];
+        img.setAttribute("width", "100%");
+    } else{
+        img.src = images[whichStage];
+        img.setAttribute("height", "100%");
+        img.setAttribute("width", "100%");
+    }
 
     var maintext = document.createElement("div");
     maintext.setAttribute("class","maintext");
@@ -109,10 +115,10 @@ function outcomeMessage(occur){
         case 4: 
             if (occur == true) {
                 skipStages[stage] = 0; 
-                return "Excessive force was used";
+                return "Jerome lost consciousness.";
             } else {
                 skipStages[stage] = 1; 
-                return "Excessive force was not used";
+                return "Jerome did not lose consciousness.";
             } 
         case 7: 
             if (occur == true) {
@@ -230,23 +236,21 @@ function changeColor(){
 function showButton(whichStage, toggle) {
     var gen = document.getElementById("generate");
     var cont = document.getElementById("continue");
-    var card = document.getElementById("cards");
-    if (probability[whichStage]==0 & whichStage<stageNames.length-1 | toggle==true) {
+    var map = document.getElementById("map");
+    if (whichStage==stageNames.length-1){
+        cont.style.display = "none";
+        gen.style.display = "none";
+        map.style.display = "grid";
+      }
+    else if (probability[whichStage]==0 & whichStage<stageNames.length-1 | toggle==true) {
       cont.style.display = "grid";
       gen.style.display = "none";
-      card.style.display = "none";
+      map.style.display = "none";
     } 
-    else if (whichStage==stageNames.length-1) {
-      cont.style.display = "none";
-      gen.style.display = "none";
-      card.style.display = "grid";
-        
-    }
     else {
       gen.style.display = "grid";
       cont.style.display = "none";
-      card.style.display = "none";
-
+      map.style.display = "none";
     }
   }
 

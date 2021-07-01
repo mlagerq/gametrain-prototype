@@ -43,7 +43,7 @@
 #healthProgress {
   width: 50%;
   height: 30px;
-  background-color: #04AA6D;
+  background-color: #04aa6d;
 }
 #moneyBar {
   width: 90%;
@@ -54,7 +54,7 @@
 #moneyProgress {
   width: 50%;
   height: 30px;
-  background-color: #04AA6D;
+  background-color: #04aa6d;
 }
 .probability_background {
   /* background-color:rgba(5.000000176951289, 4.000000236555934, 1.0000000591389835, 1); */
@@ -172,7 +172,7 @@
   letter-spacing: 0;
 }
 .map {
-	background-color: rgba(
+  background-color: rgba(
     39.00000147521496,
     203.00000309944153,
     205.00000298023224,
@@ -239,9 +239,10 @@
   top: calc(100% * 255 / 1024);
   font-family: Roboto;
   text-align: left;
-  font-size: 3.333vw;
+  font-size: 3vw;
   letter-spacing: 0;
   padding-left: 1vw;
+  overflow: auto;
 }
 .prompt_text {
   background-color: rgba(
@@ -327,8 +328,6 @@
   top: calc(100% * 70.07955932617188 / 1024);
 } */
 
-
-
 /* Cards */
 /* .e74_593 { 
 	overflow:hidden;
@@ -339,23 +338,33 @@
 	height:1024px;
 	position:absolute;
 } */
-.background { 
-	background-color:rgba(196.00000351667404, 196.00000351667404, 196.00000351667404, 1);
-	/* width:1440px;
+.background {
+  background-color: rgba(
+    196.00000351667404,
+    196.00000351667404,
+    196.00000351667404,
+    1
+  );
+  /* width:1440px;
 	height:900px; */
-	width:100%;
-	height:100%;
-	position:absolute;
-	left:0px;
-	top:0px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0px;
+  top: 0px;
 }
-.card_background { 
-	background-color:rgba(48.000000938773155, 48.000000938773155, 54.00000058114529, 1);
-	width:calc(100% * 1180 / 1440);
-	height:calc(100% * 450 / 900);
-	position:absolute;
-	left:calc(100% * 130 / 1440);
-	top:calc(100% * 160 / 900);
+.card_background {
+  background-color: rgba(
+    48.000000938773155,
+    48.000000938773155,
+    54.00000058114529,
+    1
+  );
+  width: calc(100% * 1180 / 1440);
+  height: calc(100% * 450 / 900);
+  position: absolute;
+  left: calc(100% * 130 / 1440);
+  top: calc(100% * 160 / 900);
 }
 /* .e74_597 { 
 	background-color:rgba(48.000000938773155, 48.000000938773155, 54.00000058114529, 0.800000011920929);
@@ -366,7 +375,7 @@
 	top:calc(100% * 630 / 900);
 } */
 .card:hover {
-	transform: scale(1.05);
+  transform: scale(1.05);
 }
 .card {
   text-align: center;
@@ -382,51 +391,81 @@
   margin-right: 5%;
   font-size: 1.25em;
 }
-#card1 { 
-	background-color:rgba(229.00000154972076, 229.00000154972076, 229.00000154972076, 1);
-	width:calc(100% * 320 / 1440);
-	height:calc(100% * 410 / 900);
-	position:absolute;
-	left:calc(100% * 160 / 1440);
-	top:calc(100% * 180 / 900);
+#card1 {
+  background-color: rgba(
+    229.00000154972076,
+    229.00000154972076,
+    229.00000154972076,
+    1
+  );
+  width: calc(100% * 320 / 1440);
+  height: calc(100% * 410 / 900);
+  position: absolute;
+  left: calc(100% * 160 / 1440);
+  top: calc(100% * 180 / 900);
 }
-#card2 { 
-	background-color:rgba(229.00000154972076, 229.00000154972076, 229.00000154972076, 1);
-	width:calc(100% * 320 / 1440);
-	height:calc(100% * 410 / 900);
-	position:absolute;
-	left:calc(100% * 560 / 1440);
-	top:calc(100% * 180 / 900);
+#card2 {
+  background-color: rgba(
+    229.00000154972076,
+    229.00000154972076,
+    229.00000154972076,
+    1
+  );
+  width: calc(100% * 320 / 1440);
+  height: calc(100% * 410 / 900);
+  position: absolute;
+  left: calc(100% * 560 / 1440);
+  top: calc(100% * 180 / 900);
 }
-#card3 { 
-	background-color:rgba(229.00000154972076, 229.00000154972076, 229.00000154972076, 1);
-	width:calc(100% * 320 / 1440);
-	height:calc(100% * 410 / 900);
-	position:absolute;
-	left:calc(100% * 960 / 1440);
-	top:calc(100% * 180 / 900);
+#card3 {
+  background-color: rgba(
+    229.00000154972076,
+    229.00000154972076,
+    229.00000154972076,
+    1
+  );
+  width: calc(100% * 320 / 1440);
+  height: calc(100% * 410 / 900);
+  position: absolute;
+  left: calc(100% * 960 / 1440);
+  top: calc(100% * 180 / 900);
 }
-.bottom_bar { 
-	background-color:rgba(5.000000176951289, 4.000000236555934, 1.0000000591389835, 1);
-	width:100%;
-	height:calc(100% * 124 / 900);
-	position:absolute;
-	left:0px;
-	bottom:0px;
+.bottom_bar {
+  background-color: rgba(
+    5.000000176951289,
+    4.000000236555934,
+    1.0000000591389835,
+    1
+  );
+  width: 100%;
+  height: calc(100% * 124 / 900);
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
 }
-.right_button { 
-	background-color:rgba(196.00000351667404, 196.00000351667404, 196.00000351667404, 1);
-	width:calc(100% * 240 / 1440);
-	height:calc(100% * 77 / 900);
-	position:absolute;
-	left:calc(100% * 1160 / 1440);
-	bottom:calc(100% * 25 / 900);
+.right_button {
+  background-color: rgba(
+    196.00000351667404,
+    196.00000351667404,
+    196.00000351667404,
+    1
+  );
+  width: calc(100% * 240 / 1440);
+  height: calc(100% * 77 / 900);
+  position: absolute;
+  left: calc(100% * 1160 / 1440);
+  bottom: calc(100% * 25 / 900);
 }
-.left_button { 
-	background-color:rgba(196.00000351667404, 196.00000351667404, 196.00000351667404, 1);
-	width:calc(100% * 240 / 1440);
-	height:calc(100% * 77 / 900);
-	position:absolute;
-	left:calc(100% * 40 / 1440);
-	bottom:calc(100% * 25 / 900);
+.left_button {
+  background-color: rgba(
+    196.00000351667404,
+    196.00000351667404,
+    196.00000351667404,
+    1
+  );
+  width: calc(100% * 240 / 1440);
+  height: calc(100% * 77 / 900);
+  position: absolute;
+  left: calc(100% * 40 / 1440);
+  bottom: calc(100% * 25 / 900);
 }
