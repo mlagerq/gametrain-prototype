@@ -61,7 +61,7 @@ var cards = {
 }
 
 const images = ["images/park.jpeg","images/character.jpeg","images/house.jpg", "images/camera.jpg", "images/scene1.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg", "images/scene2.jpeg"];
-const maps = ["images/map1.PNG", "images/map2.PNG", "images/map3.PNG", "images/map4.PNG", "images/map5.PNG", "images/map6.PNG"];
+const maps = ["images/map1.png", "images/map2.png", "images/map3.png", "images/map4.png", "images/map5.png", "images/map6.png"];
 const probability = [0, 0, 0, 0, 3, 0, 0, 7, 0, 5, 0, 0, 0, 0];
 const skipStages = [0, 0, 0, 0, null, 1, 0, null, 0, null, 2, 1, 0, 0, -1];
 
@@ -91,6 +91,8 @@ function replaceImage(whichStage){
     var imagediv = document.createElement("div");
     imagediv.setAttribute("id","imagediv");
     var img = document.createElement("img");
+    console.log(whichStage);
+    console.log(stageNames.length);
     if (whichStage == stageNames.length){
         img.src = maps[1];
         img.setAttribute("width", "100%");
@@ -184,7 +186,6 @@ function changeColor(){
     prob = probability[stage];
     //random outcome
     rand = 20+Math.round(Math.random()*30);
-    console.log(rand)
     first = document.getElementById("icon0");
     first.style.color = "yellowgreen";
     let i = 1;
@@ -221,17 +222,28 @@ function changeColor(){
     }, 100);
 }
 
-// let elem = document.getElementById("done");   
-// let width = 1;
-// let id = setInterval(frame, 100);
-// function frame() {
-//     if (width >= 100) {
-//         clearInterval(id);
-// } else {
-//     width++; 
-//     elem.style.width = width + '%'; 
-// }
-// }
+function generateMap() {
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    var img = document.getElementById("myImg");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    img.onclick = function(){
+    modal.style.display = "block";
+    modalImg.src = this.src;
+    captionText.innerHTML = this.alt;
+    }
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() { 
+    modal.style.display = "none";
+    }
+}
 
 function showButton(whichStage, toggle) {
     var gen = document.getElementById("generate");

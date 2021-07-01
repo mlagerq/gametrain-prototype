@@ -76,58 +76,6 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
-/* #progress {
-  height: 38px;
-  width: 150px;
-  background-color: #0080ff;
-  border-radius: 6px;
-  background: #6db3f2;
-  background: -moz-linear-gradient(
-    top,
-    #6db3f2 0%,
-    #54a3ee 50%,
-    #3690f0 51%,
-    #1e69de 100%
-  );
-  
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    color-stop(0%, #6db3f2),
-    color-stop(50%, #54a3ee),
-    color-stop(51%, #3690f0),
-    color-stop(100%, #1e69de)
-  );
-  
-  position: absolute;
-  left: 90.069%;
-  top: -0.09765%;
-}
-
-#done:active {
-  -webkit-box-shadow: inset 0px 0px 18px rgba(0, 0, 0, 0.4);
-  box-shadow: inset 0px 0px 18px rgba(0, 0, 0, 0.4);
-  border-radius: 6px;
-}
-
-#done {
-  text-align: center;
-  line-height: 38px;
-  font-size: 14px;
-  font-weight: bold;
-  color: #eee;
-  height: 38px;
-  width: 250px;
-  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-}
-
-#pb:hover #progress {
-  transition: all 10.3s;
-  width: 10px;
-} */
-
 .bank_icon {
   width: 9.93%;
   height: 12.988%;
@@ -189,31 +137,91 @@
   font-size: 2.5vw;
   letter-spacing: 0;
 }
-/* .map_background {
-  background-color: rgba(
-    39.00000147521496,
-    203.00000309944153,
-    205.00000298023224,
-    1
-  );
-  width: calc(100% * 75 / 1440);
-  height: calc(100% * 81 / 1024);
-  position: absolute;
-  left: calc(100% * 124 / 1440);
-  top: calc(100% * 924 / 1024);
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
 }
-.map_text {
-  color: rgba(255, 255, 255, 1);
-  width: calc(100% * 109 / 1440);
-  height: calc(100% * 75 / 1024);
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
   position: absolute;
-  left: calc(100% * 128 / 1440);
-  top: calc(100% * 940 / 1024);
-  font-family: Roboto;
-  text-align: left;
-  font-size: 2.5vw;
-  letter-spacing: 0;
-} */
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
 .probability_inner_background {
   width: calc(100% * 560 / 1440);
   height: calc(100% * 70 / 1024);
