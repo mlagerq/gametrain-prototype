@@ -4,15 +4,15 @@ let outcomes = 0;
 //content for each stage
 const stageNames = [
     "Start",
-    "Meet the Character", 
+    "Meet Jerome", 
     "Story", 
     "Police", 
-    "Will excessive force be used?", 
-    "Excessive force used", 
-    "No excessive force",
+    "Lose consciousness?", 
+    "Unconscious", 
+    "Conscious",
     "Bail?", 
     "$2000 bail", 
-    "Can you pay bail?", 
+    "Pay bail?", 
     "Cannot pay bail",
     "Can pay bail",  
     "No bail!", 
@@ -21,7 +21,7 @@ const story = [
     "Here are the basic rules...",
     "Hey, thanks for coming. I’m Jerome, and this is my story.",
     "When he was 22 years old, Jerome and a couple other guys were struggling to make ends meet. They decided to break into a house in a nicer neighborhoods.",
-    "The police arrested Jerome a few days later based on video footage from another house. During the arrest, the police used excessive force on Jerome, putting him in a chokehold. During the arrest, the police used excessive force on Jerome, putting him in a chokehold. During the arrest, the police used excessive force on Jerome, putting him in a chokehold.",
+    "The police arrested Jerome a few days later based on video footage from another house. During the arrest, the police used excessive force on Jerome, putting him in a chokehold.",
     "This can restrict breathing and sometimes result in serious injury, including loss of consciousness and even death. What will happen in Jerome's case?",
     "The police used the chokehold recklessly and caused Jerome to lose consciousness. He was at risk for brain damage, psychological injury, and other lasting harm.",
     "The police did not cause long-lasting physical damage, but Jerome may still suffer from lasting psychological effects, especially if this is not the first trauma he has experienced.",
@@ -65,6 +65,12 @@ const maps = ["images/map1.png", "images/map2.png", "images/map3.png", "images/m
 const probability = [0, 0, 0, 0, 3, 0, 0, 7, 0, 5, 0, 0, 0, 0];
 const skipStages = [0, 0, 0, 0, null, 1, 0, null, 0, null, 2, 1, 0, 0, -1];
 
+const healthEffects =   [0,0,0,0,0,-30,-15,0,0,0,-20,10,0,0];
+const financialEffects= [0,0,0,0,0,-20,0,0,0,0,-25,-10,0,0];
+var health = 75;
+var financial = 75;
+
+
 //updates stage content when "continue" button is pressed
 function nextStage(whichStage){
     // if (whichStage>stageNames.length) {
@@ -76,7 +82,9 @@ function nextStage(whichStage){
     updateElement("maintext", story, whichStage);
     replaceImage(whichStage);
     probMachine(whichStage);
+    updateMetrics(whichStage);
     showButton(whichStage, false);
+    
     stage=whichStage;
 }
 
@@ -91,8 +99,6 @@ function replaceImage(whichStage){
     var imagediv = document.createElement("div");
     imagediv.setAttribute("id","imagediv");
     var img = document.createElement("img");
-    console.log(whichStage);
-    console.log(stageNames.length);
     if (whichStage == stageNames.length){
         img.src = maps[1];
         img.setAttribute("width", "100%");
@@ -109,6 +115,24 @@ function replaceImage(whichStage){
 
     imagediv.appendChild(img);
     document.getElementById("imagediv").replaceWith(imagediv);
+}
+
+function updateMetrics(whichStage){
+    if (healthEffects[whichStage] != 0 || financialEffects[whichStage] != 0 || healthEffects[whichStage] == null) {
+        var healthProgress = document.getElementById('healthProgress');
+        var moneyProgress = document.getElementById('moneyProgress');
+        
+        health = health + healthEffects[whichStage];
+        financial = financial + financialEffects[whichStage];
+        console.log(health);
+        console.log(financial);
+
+        healthProgress.style.width = health+'%';
+        moneyProgress.style.width = financial+'%';
+    }
+    // if (healtheffects[whichStage]==null) {
+
+    // }
 }
 
 // keeps track of which decision point we're at

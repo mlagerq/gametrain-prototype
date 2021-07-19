@@ -41,7 +41,7 @@
 }
 
 #healthProgress {
-  width: 50%;
+  width: 75%;
   height: 30px;
   background-color: #04aa6d;
 }
@@ -52,7 +52,7 @@
 }
 
 #moneyProgress {
-  width: 50%;
+  width: 75%;
   height: 30px;
   background-color: #04aa6d;
 }
@@ -244,7 +244,8 @@
   position: absolute;
   display: grid;
   left: calc(100% * 53 / 1440);
-  top: calc(100% * 255 / 1024);
+  /* top: calc(100% * 255 / 1024); */
+  top: calc(100% * 300 / 1024);
   font-family: Roboto;
   text-align: left;
   font-size: 3vw;
@@ -281,7 +282,9 @@
     0.800000011920929
   );
   color: rgba(255, 255, 255, 1);
-  width: calc(100% * 405 / 1440);
+  /* width: calc(100% * 405 / 1440); */
+  width: calc(100% * 500 / 1440);
+
   height: calc(100% * 95 / 1024);
   position: absolute;
   left: 0%;
